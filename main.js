@@ -118,8 +118,8 @@ function bandera(element) {
 	newElement.innerHTML = `					
 					
 				<div class="country-details">		
-					<img class="country-details-img" src= ${element.flags.svg} alt="the flag of ${element.name.common} " tabindex=0>
-					<h1>¿De cual pais es esta bandera?</h1>
+					<img class="country-details-img" src= ${element.flags.svg} alt="sos hacker ${element.name.common} " tabindex=0>
+					<h1 style="text-align: center;">¿De cual pais es esta bandera?</h1>
 					<input type="text" name="paiss" id="paiss">
 					<button onclick="mostrar()">Verificar</button>
 			</div>     
