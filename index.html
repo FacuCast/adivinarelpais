@@ -8,47 +8,95 @@
 	<title>Document</title>
 </head>
 <style>
-	img,
-	h1,
-	input,
-	#text1,
-	h2,
-	button {
+	@media (min-width: 600px) {
 
-		max-width: 50%;
-		height: auto;
-		display: block;
-		margin: auto;
+		img,
+		h1,
+		input,
+		#text1,
+		h2,
+		button {
 
+			max-width: 50%;
+			height: auto;
+			display: block;
+			margin: auto;
+
+		}
+
+		input {
+			width: 100%;
+			padding: 12px 20px;
+			box-sizing: border-box;
+			margin-top: 2%;
+		}
+
+		button {
+			background-color: #af984c;
+			/* Green */
+			border: none;
+			margin-bottom: 5%;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			margin-top: 2%;
+			text-decoration: none;
+			font-size: 19px;
+		}
+
+		button:hover {
+			background-color: #4CAF50;
+			/* Green */
+			color: white;
+		}
 	}
 
-	input {
-		width: 100%;
-		padding: 12px 20px;
-		box-sizing: border-box;
-		margin-top: 2%;
-	}
+	@media (max-width: 601px) {
+		h1 {
+			font-family: Verdana;
+		}
 
-	button {
-		background-color: #af984c;
-		/* Green */
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		margin-top: 2%;
-		text-decoration: none;
-		font-size: 19px;
-	}
+		img,
+		#text1,
+		h2,
+		button {
 
-	button:hover {
-		background-color: #4CAF50;
-		/* Green */
-		color: white;
+			max-width: 85%;
+			height: auto;
+			display: block;
+			margin: auto;
+
+		}
+
+		input {
+			width: 100%;
+			padding: 12px 20px;
+			box-sizing: border-box;
+			margin-top: 2%;
+		}
+
+		button {
+			background-color: #af984c;
+			/* Green */
+			border: none;
+			color: white;
+			margin-bottom: 5%;
+			padding: 15px 32px;
+			text-align: center;
+			margin-top: 2%;
+			text-decoration: none;
+			font-size: 13px;
+		}
+
+		button:hover {
+			background-color: #4CAF50;
+			/* Green */
+			color: white;
+		}
 	}
 </style>
 
-<body style="background: #00000078;">
+<body style="background: #00000078">
 	<div class="container">
 		<main class="main">
 			<div class="mainWrapper">
