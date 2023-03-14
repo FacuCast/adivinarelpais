@@ -3,10 +3,12 @@ let pais = []; //an array to hold all the alpha3Code for all countries
 let prue = [];
 let idioma = [];
 let capital = [];
+
 let puntos = 0;
 let pistas = 0;
 let region = [];
 let i = 0;
+let NombrePais = [];
 
 const fetchCountry = async (event) => {
 	//old api that was changed - `https://restcountries.eu/rest/v2/all `;
@@ -22,6 +24,7 @@ const fetchCountry = async (event) => {
 				idioma[i] = element.region;
 				capital[i] = element.region;
 
+				NombrePais[i] = element.translations.spa.common;
 				i++;
 			})
 
@@ -35,11 +38,12 @@ function getRandomInt(max) {
 }
 
 function Adivina() {
-	
+
 	numero = getRandomInt(130);
 	region[300] = region[numero];
 	idioma[300] = idioma[i];
 	capital[300] = capital[i];
+	NombrePais[300] = NombrePais[numero]
 	//old api that was changed - `https://restcountries.eu/rest/v2/all `;
 	const apiEndpoint = `https://restcountries.com/v3.1/name/${pais[numero]}`
 
@@ -141,12 +145,14 @@ function pista() {
 function Rendirse() {
 	document.getElementById('text1').innerHTML = '';
 
+	pistas = 0;
+
 	const newElement = document.createElement("div");
 	newElement.classList.add("div");
 	newElement.id = "page";
 	newElement.innerHTML = `<h2>El pais era: ${pais[1]}</h2>`;
 	document.querySelector("#text1").appendChild(newElement);
-	
+
 	document.getElementById('paises2').innerHTML = '';
 	Adivina();
 }
@@ -156,9 +162,10 @@ function mostrar() {
 	inputValue = inputValue.toLowerCase();
 	pais[1] = pais[1].toLowerCase();
 
-	if (inputValue == pais[1]) {
+	if (inputValue == pais[1] || inputValue == NombrePais[300]) {
 		document.getElementById('text2').innerHTML = '';
-		document.getElementById('text1').innerHTML = '';
+
+		pistas = 0;
 
 		const newElement = document.createElement("div");
 		newElement.classList.add("div");
@@ -166,15 +173,18 @@ function mostrar() {
 		newElement.innerHTML = `<h2>Puntuacion: ${puntos}</h2>`;
 		document.querySelector("#text2").appendChild(newElement);
 
+		document.getElementById('text1').innerHTML = '';
+
 		document.getElementById('paises2').innerHTML = '';
 		Adivina();
 	} else {
 		var borrardiv = document.getElementById("text1").lastChild;
-		document.getElementById("text1").removeChild(borrardiv);
 		simi = similarity(inputValue, pais[1]);
 		simi = simi * 100;
 		simi = simi.toString();
 		similar = simi.substr(0, 4)
+
+		document.getElementById('text1').innerHTML = '';
 
 		const newElement = document.createElement("div");
 		newElement.classList.add("div");
@@ -186,7 +196,7 @@ function mostrar() {
 }
 
 function bandera(element) {
-	
+
 	const newElement = document.createElement("div");
 	newElement.id = "page";
 	newElement.classList.add("div");
