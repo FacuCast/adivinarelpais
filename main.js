@@ -35,6 +35,7 @@ function getRandomInt(max) {
 }
 
 function Adivina() {
+	
 	numero = getRandomInt(130);
 	region[300] = region[numero];
 	idioma[300] = idioma[i];
@@ -137,22 +138,35 @@ function pista() {
 	}
 }
 
+function Rendirse() {
+	document.getElementById('text1').innerHTML = '';
+
+	const newElement = document.createElement("div");
+	newElement.classList.add("div");
+	newElement.id = "page";
+	newElement.innerHTML = `<h2>El pais era: ${pais[1]}</h2>`;
+	document.querySelector("#text1").appendChild(newElement);
+	
+	document.getElementById('paises2').innerHTML = '';
+	Adivina();
+}
+
 function mostrar() {
 	let inputValue = document.getElementById("paiss").value;
 	inputValue = inputValue.toLowerCase();
 	pais[1] = pais[1].toLowerCase();
 
 	if (inputValue == pais[1]) {
-
+		document.getElementById('text2').innerHTML = '';
 		document.getElementById('text1').innerHTML = '';
-	
+
 		const newElement = document.createElement("div");
 		newElement.classList.add("div");
 		puntos += 100;
 		newElement.innerHTML = `<h2>Puntuacion: ${puntos}</h2>`;
-		document.querySelector("#modal").appendChild(newElement);
+		document.querySelector("#text2").appendChild(newElement);
 
-		document.getElementById('Martin').innerHTML = '';
+		document.getElementById('paises2').innerHTML = '';
 		Adivina();
 	} else {
 		var borrardiv = document.getElementById("text1").lastChild;
@@ -172,19 +186,19 @@ function mostrar() {
 }
 
 function bandera(element) {
-
+	
 	const newElement = document.createElement("div");
+	newElement.id = "page";
 	newElement.classList.add("div");
 	newElement.innerHTML = `					
-					
-				<div class="country-details" id="Martin">		
-					<img class="country-details-img" src= ${element.flags.svg} alt="sos hacker ${element.name.common} " tabindex=0>
+				<div class="country-details" id="Martin" id="divs">		
+					<img style="width: 50%;height: 50%;" class="country-details-img" id="divs" src= ${element.flags.svg} alt="sos hacker ${element.name.common} " tabindex=0>
 					<h1 style="text-align: center;">¿De cual pais es esta bandera?</h1>
 					<input type="text" name="paiss" id="paiss">
-					<button onclick="mostrar()">Verificar</button>
+					<button onclick="mostrar()">Verificar</button><button onclick="Rendirse()">Me rindo</button>
 			</div>     
 			`;
-	document.querySelector("#modal").appendChild(newElement);
+	document.querySelector("#paises2").appendChild(newElement);
 }
 
 fetchCountry();
